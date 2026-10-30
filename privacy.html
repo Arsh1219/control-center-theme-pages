@@ -59,7 +59,7 @@ footer { margin-top: 3.5rem; padding-top: 1.5rem; border-top: 1px solid #DDE3EB;
 
 <h2>The short version</h2>
 <ul>
-<li><strong>The app never reads what is on your screen.</strong> The Accessibility Service is used only to show the control panel over other apps when you swipe from the screen edge, and to take a screenshot or lock the screen when you tap those tiles. It does not read your screen content, typed text, passwords, messages or notifications.</li>
+<li><strong>The app never reads what is on your screen.</strong> The Accessibility Service is used only to show the control panel over other apps when you swipe from the screen edge, and to take a screenshot or lock the screen when you tap those tiles. It checks only the type and position of system windows, so the trigger can step aside under the notification shade. It does not read your screen content, typed text, passwords, messages or notifications.</li>
 <li><strong>Screen recordings stay on your phone.</strong> Videos you record are saved only on your device. The app never uploads them. The microphone is used only if you turn on sound recording, and only while a recording runs.</li>
 <li><strong>Your photos stay on your phone.</strong> A photo you pick as a custom theme background is chosen through the Android photo picker and stored only inside the app on your device.</li>
 <li>The state of WiFi, Bluetooth, mobile data, airplane mode, brightness, volume, sound mode and Do Not Disturb is read on your device only to show it in the panel. None of it leaves your device.</li>
@@ -73,8 +73,9 @@ footer { margin-top: 3.5rem; padding-top: 1.5rem; border-top: 1px solid #DDE3EB;
 <p>Control Center uses the Android Accessibility Service to show its control panel on top of other apps. Before you turn it on, the app explains how it is used and asks for your agreement.</p>
 <ul>
 <li>It places a small trigger area on the screen edge you choose and opens the control panel when you swipe or tap it.</li>
+<li>It only checks where system windows are (their type and position), so the trigger can step aside while the notification shade or the lock screen is open, and, if you turn on that option, while a fullscreen app is shown in landscape.</li>
 <li>It takes a screenshot or locks the screen only when you tap the screenshot or lock screen tile in the panel. It performs no other actions for you.</li>
-<li>It does not read your screen content, typed text, passwords, messages or notifications, and it does not see the content of other apps.</li>
+<li>It does not read your screen content, typed text, passwords, messages or notifications, and it does not read the content of other apps. Window information is used live on your device and is never logged, stored or sent.</li>
 <li>No personal data is collected or shared through this service.</li>
 </ul>
 <p>You can turn it off at any time in the app, or in Android settings under Accessibility, Control Center. The control panel then stops appearing.</p>
@@ -92,18 +93,20 @@ footer { margin-top: 3.5rem; padding-top: 1.5rem; border-top: 1px solid #DDE3EB;
 <div class="tablewrap"><table>
 <tr><th>Permission</th><th>Why the app needs it</th></tr>
 <tr><td>Accessibility Service</td><td>To show the control panel over other apps when you swipe from the screen edge, and to take a screenshot or lock the screen when you tap those tiles, as described above.</td></tr>
-<tr><td>Screen capture (media projection) and foreground service</td><td>To record your screen when you start the screen recorder. A notification shows while it records.</td></tr>
+<tr><td>Screen capture (media projection) and foreground service</td><td>To record your screen when you start the screen recorder. Android asks for your consent before each recording, and a notification shows while it records. The service uses its microphone type only when you record sound.</td></tr>
 <tr><td>Microphone</td><td>Only if you turn on sound for a recording, to add your voice to the video.</td></tr>
-<tr><td>Notifications</td><td>To show the recording notification with its Stop button.</td></tr>
+<tr><td>Notifications</td><td>On Android 13 and later, asked once before your first recording, to show the recording notification with its Stop button.</td></tr>
 <tr><td>Modify system settings</td><td>To change brightness and rotation lock from the panel sliders and tiles.</td></tr>
 <tr><td>Do Not Disturb access</td><td>To switch silent mode and Do Not Disturb from the panel.</td></tr>
 <tr><td>Flashlight</td><td>To turn the flashlight on and off. The camera is never used to take pictures.</td></tr>
-<tr><td>Network, WiFi and Bluetooth state</td><td>To show whether WiFi, Bluetooth and mobile data are on in the panel. WiFi, Bluetooth, mobile data and airplane mode tiles open the matching Android setting, because Android does not let apps switch them directly.</td></tr>
+<tr><td>Network and WiFi state</td><td>To show whether WiFi and mobile data are on in the panel. Bluetooth on or off is read without any extra permission. On Android 10 and later, the WiFi, Bluetooth, mobile data and airplane mode tiles open the matching Android setting, because Android does not let apps switch them directly.</td></tr>
+<tr><td>Change WiFi and Bluetooth (Android 9 and older only)</td><td>Older Android versions still let apps switch WiFi and Bluetooth, so on those phones the tiles switch them directly.</td></tr>
+<tr><td>Storage (Android 9 and older only)</td><td>To save your recordings in the Movies folder. Newer Android versions need no storage permission for this.</td></tr>
 <tr><td>Set wallpaper</td><td>To set the theme art as your wallpaper when you choose Set as wallpaper.</td></tr>
 <tr><td>Vibration</td><td>For the optional short vibration when the panel opens.</td></tr>
 <tr><td>Internet</td><td>To load ads, send analytics and crash reports, and check your subscription with Google Play.</td></tr>
 </table></div>
-<p>The app does not ask for location, contacts, phone call, SMS or storage permissions. The location and hotspot tiles only open the Android settings screens.</p>
+<p>The app does not ask for location, contacts, phone call, SMS, camera or photo library permissions, and does not use the "display over other apps" permission. The location and hotspot tiles only open the Android settings screens. The calculator, clock and camera tiles open the apps already on your phone; the app only checks which ones are installed for this purpose and does not record or send that list.</p>
 
 <h2>Information that stays on your device</h2>
 <p>The app reads the current state of WiFi, Bluetooth, mobile data, airplane mode, brightness, volume, rotation lock, sound mode and Do Not Disturb live on your device to show it in the panel. Music controls send play, pause, next and previous to the app that is playing; the app does not read what you are listening to. Your themes, custom themes, panel settings, recordings and the background photos you pick are stored only on your device. None of this is stored on a server, sent to us or shared with anyone.</p>
